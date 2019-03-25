@@ -1,0 +1,29 @@
+
+<div class="col-md-6 mx-auto mt-4">
+    <div class="card">
+        <div class="card-header">
+            <h2>Editar Nota</h2>
+        </div>
+        <div class="card-body">
+           
+            {{#each errors}}
+                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                    {{this}}
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            {{/each}}
+
+            <form action="/notes/edit/{{note.id}}" method="POST">
+                <div class="form-group">
+                    <input type="text" name="title" value="{{note.title}}" class="form-control" placeholder="Titulo" autofocus>
+                </div>
+                <div class="form-group">
+                    <textarea type="text" name="description" class="form-control" placeholder="Descripción">{{note.description}}</textarea>
+                </div>
+                <button type="submit" class="btn btn-success btn-block">EDITAR NOTA</button>
+            </form>
+        </div>
+    </div>
+</div>
