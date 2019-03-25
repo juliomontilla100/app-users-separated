@@ -1,0 +1,32 @@
+<div class="container">
+    <div class="row mt-4">
+        {{#each allNotes}}
+            <div class="col-md-3">
+                <div class="card">
+                    <div class="card-header d-flex justify-content-between">
+                        {{title}} <a href="">Editar</a>
+                    </div>
+                    <div class="card-body">
+                        <p class="card-text">{{description}}</p>
+
+                        <a href="" class="btn btn-danger d-block mt-3">Borrar</a>
+                    </div>
+                </div>
+            </div>
+
+        {{else}}
+            <div class="col-md-3 mx-auto">
+                <div class="card">
+                    <div class="card-header d-flex justify-content-between">
+                        No Hay Notas
+                    </div>
+                    <div class="card-body">
+                        <p class="card-text">Que esperas?</p>
+
+                        <a href="notes/add" class="btn btn-primary d-block mt-3">Crea una Nota</a>
+                    </div>
+                </div>
+            </div>
+        {{/each}}
+    </div>
+</div>
