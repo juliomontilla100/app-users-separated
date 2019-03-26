@@ -1,4 +1,14 @@
 <div class="container">
+
+    {{#if successMessage}}
+        <div class="alert alert-success alert-dismissible fade show mt-3" role="alert">
+            {{successMessage}}
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+    {{/if}}
+
     <div class="row mt-4">
         {{#each allNotes}}
             <div class="col-md-3">
@@ -9,7 +19,10 @@
                     <div class="card-body">
                         <p class="card-text">{{description}}</p>
 
-                        <a href="notes/delete/{{id}}" class="btn btn-danger d-block mt-3">Borrar</a>
+                        <form method="POST" action="notes/delete/{{id}}?_method=DELETE">
+                            <button class="btn btn-danger d-block mt-3 d-block w-100" type="submit">Borrar</button>
+                        </form>
+
                     </div>
                 </div>
             </div>

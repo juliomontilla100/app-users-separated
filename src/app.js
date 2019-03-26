@@ -3,6 +3,7 @@ const path = require('path')
 const expressHandlebars = require('express-handlebars')
 const methodOverride = require('method-override')
 const session = require('express-session')
+const flash = require('connect-flash')
 const router = require('./routes')
 
 const app = express()
@@ -27,6 +28,7 @@ app.use(session({
     resave: true,
     saveUninitialized: true,
 }))
+app.use(flash())
 
 /* global variables */
 

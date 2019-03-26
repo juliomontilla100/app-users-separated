@@ -7,7 +7,7 @@ router.get('/', async (req,res) => {
 
     let allNotes = await NoteController.findAllNotes().sort({created_at: 'desc'})
 
-    res.render("notes/all-notes", {allNotes})
+    res.render("notes/all-notes", { successMessage: req.flash('success'), allNotes})
 
 })
 
@@ -42,6 +42,8 @@ router.post('/add', async (req,res) => {
 
         await NoteController.newNote(note)
 
+        req.flash('success', 'Nota Creada exitosamente')
+
         res.redirect('/notes')
     }
     
@@ -54,11 +56,12 @@ router.get('/edit/:id', async (req,res) => {
 
     let note = await NoteController.findNoteById(id)
     
+   
     res.render('notes/edit-note', {note})
     
 })
 
-router.post('/edit/:id', async (req,res) => {
+router.put('/edit/:id', async (req,res) => {
 
     let id = req.params.id
     
@@ -88,17 +91,20 @@ router.post('/edit/:id', async (req,res) => {
 
         await NoteController.updateNote(id, data)
 
+        req.flash('success', 'Nota Editada exitosamente')
         res.redirect('/notes')
     }
 
 })
 
-router.get('/delete/:id', async (req,res) => {
+router.delete('/delete/:id', async (req,res) => {
 
     let id = req.params.id
     
     let note = await NoteController.removeNote(id)
-    
+
+    req.flash('success', 'Nota Borrada exitosamente')
+
     res.redirect('/notes')
 })
 
